@@ -1,6 +1,7 @@
 \documentclass[]{article}
 \usepackage{amsmath,amsthm,amssymb,amsfonts}
 \usepackage{tikz}
+\usepackage{hyperref}
 
 \graphicspath{ {./images/} }
 
@@ -86,8 +87,30 @@
 \subsection*{2.2.5} Show that grevlex is a monomial order according to Definition 1.
 \begin{solution}
 	\begin{lemma}
-		Let $\left(S, \leq\right)$ and $\left(T, \preceq\right)$ be two partial orders and $f : S \to T$ be an order embedding such that for all $\alpha, \beta \in S, f(\alpha + \beta) = f(\alpha) + f(\beta)$. Then $S$ is a monomial ordering only when $T$ is a monomial ordering.
+		Let $\left(S, \leq\right)$ and $\left(T, \preceq\right)$ be two partial orders and $f : S \to T$ be an order embedding such that for all $\alpha, \beta \in S, f(\alpha + \beta) = f(\alpha) + f(\beta)$. If $T$ is a monomial ordering then so is $S$.
+		%Then $S$ is a monomial ordering only when $T$ is a monomial ordering.
 	\end{lemma}
+	\begin{proof}
+		Let the above be given and suppose $T$ is a monomial ordering. First, we show that $\left(S, \leq\right)$ is a total ordering. Indeed, given some $\alpha, \beta \in S$, since $\left(T, \preceq\right)$ is total, one and only one of the following must be true
+		\begin{enumerate}
+			\item $f(\alpha) < f(\beta)$
+			\item $f(\alpha) > f(\beta)$
+			\item $f(\alpha) = f(\beta)$.
+		\end{enumerate}
+		In any of these three cases, \href{https://en.wikipedia.org/wiki/Order_embedding}{by definition of an order embedding}, the corresponding relation must be true. That is to say, if $f(\alpha) < f(\beta)$ then it must be the case that $\alpha < \beta$, and correspondingly for the remaining two possibilities. Thus $S$ is totally ordered.
+		\\
+		\\
+		Next, we show that $S$ is well-ordered. Let $A \subseteq S$ be some non-empty subset. Since $f(A) \subseteq T$ and $T$ is well ordered, there must exist a smallest element $t \in f(A)$. Necessarily, since every order embedding is injective, there must exist a unique element $a \in A$ such that $f(a) = t$. It will be shown that $a$ is the smallest element of $A$. Indeed if there were to exist some $a' \in A$ such that $a' < a$ then $f(a') < f(a) = t$, contradicting the fact that $t$ is the smallest element of $f(A)$. Hence $\left(S, \leq\right)$ is well-ordered.
+		\\
+		\\
+		Finally, we show that if $\alpha, \beta, \gamma \in A$ with $\alpha > \beta$ then $\alpha + \gamma > \beta + \gamma$. Again by definition of an order embedding, we must have $f(\alpha) > f(\beta)$. Additionally, $f(\gamma) \in T$ and since $T$ is a monomial ordering it follows that
+		\begin{align*}
+			f(\alpha) + f(\gamma) &> f(\beta) + f(\gamma) &&\implies \\
+			f(\alpha + \gamma) &> f(\beta + \gamma) &&\implies \\
+			\alpha + \gamma &> \beta + \gamma.
+		\end{align*}
+		Thus $(S, \leq)$ is a monomial ordering.
+	\end{proof}
 \end{solution}
 
 \subsection*{2.2.6} Another monomial order is the \textbf{inverse lexicographic} or \textbf{invlex} order defined by the following: for $\alpha, \beta \in \ZZ_{\geq 0}^{n}, \alpha >_{\text{invlex}} \beta$ if and only if the rightmost nonzero entry of $\alpha - \beta$ is positive. Show that invlex is equivalent to the lex order with the variables permuted in a certain way. (Which permutation?)
