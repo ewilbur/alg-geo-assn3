@@ -88,12 +88,11 @@
 
 \subsection*{2.2.5} Show that grevlex is a monomial order according to Definition 1.
 \begin{solution}
-	\begin{definition}
-		Let $S$ be some set, $(T, \sim)$ be a partial order and $f : S \to T$ be an injective function. The relation $\sim' \subseteq S \times S$ defined by
-		$$
-			x \sim' y \iff 
-		$$
-	\end{definition}
+	
+\end{solution}
+
+\subsection*{2.2.6} Another monomial order is the \textbf{inverse lexicographic} or \textbf{invlex} order defined by the following: for $\alpha, \beta \in \ZZ_{\geq 0}^{n}, \alpha >_{\text{invlex}} \beta$ if and only if the rightmost nonzero entry of $\alpha - \beta$ is positive. Show that invlex is equivalent to the lex order with the variables permuted in a certain way. (Which permutation?)
+\begin{solution}
 	\begin{lemma}
 		Let $\left(S, \leq\right)$ and $\left(T, \preceq\right)$ be two partial orders and $f : S \to T$ be an order embedding such that for all $\alpha, \beta \in S, f(\alpha + \beta) = f(\alpha) + f(\beta)$. Then if $T$ is a monomial ordering, so is $S$.
 		%Then $S$ is a monomial ordering only when $T$ is a monomial ordering.
@@ -119,10 +118,7 @@
 		\end{align*}
 		Thus $(S, \leq)$ is a monomial ordering.
 	\end{proof}
-	
 \end{solution}
-
-\subsection*{2.2.6} Another monomial order is the \textbf{inverse lexicographic} or \textbf{invlex} order defined by the following: for $\alpha, \beta \in \ZZ_{\geq 0}^{n}, \alpha >_{\text{invlex}} \beta$ if and only if the rightmost nonzero entry of $\alpha - \beta$ is positive. Show that invlex is equivalent to the lex order with the variables permuted in a certain way. (Which permutation?)
 
 \subsection*{2.3.5} We will study the division of $f = x^3 - x^2y - x^2z + x$ by $f_1 = x^2y-z$ and $f_2 = xy - 1$. 
 \begin{enumerate}
