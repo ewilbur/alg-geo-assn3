@@ -168,44 +168,93 @@ where $r$ is a polynomial in $x$ alone and $\textbf{V}\left(y-x^2, z-x^3\right)$
 	$$
 	using the division algorithm.
 \end{enumerate}
-\begin{enumerate}
-	\item[a.]
-	\begin{proof}
-		Fix the monomial ordering to be $>_\text{invlex}$ which is defined in \textbf{2.2.6}. Observe that, under this ordering, $\text{LT}\left(y-x^2\right) = y$ and $\text{LT}\left(z-x^3\right) = z$. Given some $f \in \RR[x,y,z]$, the division algorithm yields $q_1, q_2,$ and $r \in \RR[x, y, z]$ such that
+\begin{solution}
+		\begin{enumerate}
+		\item[a.]
+		\begin{proof}
+			Fix the monomial ordering to be $>_\text{invlex}$ which is defined in \textbf{2.2.6}. Observe that, under this ordering, $\text{LT}\left(y-x^2\right) = y$ and $\text{LT}\left(z-x^3\right) = z$. Given some $f \in \RR[x,y,z]$, the division algorithm yields $q_1, q_2,$ and $r \in \RR[x, y, z]$ such that
+			$$
+				f = q_1\left(y-x^2\right) + q_2\left(z-x^3\right) + r.
+			$$
+			We need to show that $r$ is a polynomial in $x$ alone. By the division algorithm, there are two possibilities for $r$. Either $r = 0$ or $r$ is a linear combination, with coefficients in $k$, of monomials, none of which is divisible by any $\text{LT}\left(y-x^2\right), \text{LT}\left(z-x^3\right)$. In the first case, we may obviously express $r$ as a polynomial in $x$ alone as
+			$$
+				r(x) = 0.
+			$$
+			In the latter case, let's assume for contradiction (and without loss of generality!) that $r$ is a polynomial of $y$ as well. Well then at least one monomial of $r$ has the variable $y$ with exponent greater than 0. But this would imply that $y$ divides that monomial. But this is a contradiction since the division algorithm guarantees that no monomial of $r$ can by divisible by $\text{LT}\left(y-x^2\right) = y$. So it must be that $r$ is a polynomial in $x$ alone.
+		\end{proof}
+		\item[b.] The parametrization of the twisted cubic is
+		\begin{align*}
+			x(t) &= t   \\
+			y(t) &= t^2 \\
+			z(t) &= t^3. \\
+		\end{align*}
+		Substituting these for the expression gives
+		\begin{align*}
+			z^2 - x^4y &= \left(t^3\right)^2 - \left(t\right)^4\left(t^2\right) \\
+			&= t^6 - t^4t^2 \\
+			&= t^6 - t^6 \\
+			&= 0
+		\end{align*}
+		and so it vanishes at every point of the twisted cubic.
+		\item[c.] 
 		$$
-			f = q_1\left(y-x^2\right) + q_2\left(z-x^3\right) + r.
+			z^2 - x^4y = -x^4\left(y - x^2\right) + \left(z + x^3\right)\left(z - x^3\right)
 		$$
-		We need to show that $r$ is a polynomial in $x$ alone. By the division algorithm, there are two possibilities for $r$. Either $r = 0$ or $r$ is a linear combination, with coefficients in $k$, of monomials, none of which is divisible by any $\text{LT}\left(y-x^2\right), \text{LT}\left(z-x^3\right)$. In the first case, we may obviously express $r$ as a polynomial in $x$ alone as
-		$$
-			r(x) = 0.
-		$$
-		In the latter case, let's assume for contradiction (and without loss of generality!) that $r$ is a polynomial of $y$ as well. Well then at least one monomial of $r$ has the variable $y$ with exponent greater than 0. But this would imply that $y$ divides that monomial. But this is a contradiction since the division algorithm guarantees that no monomial of $r$ can by divisible by $\text{LT}\left(y-x^2\right) = y$. So it must be that $r$ is a polynomial in $x$ alone.
-	\end{proof}
-	\item[b.] The parametrization of the twisted cubic is
-	\begin{align*}
-		x(t) &= t   \\
-		y(t) &= t^2 \\
-		z(t) &= t^3. \\
-	\end{align*}
-	Substituting these for the expression gives
-	\begin{align*}
-		z^2 - x^4y &= \left(t^3\right)^2 - \left(t\right)^4\left(t^2\right) \\
-		&= t^6 - t^4t^2 \\
-		&= t^6 - t^6 \\
-		&= 0
-	\end{align*}
-	and so it vanishes at every point of the twisted cubic.
-	\item[c.] 
-	$$
-		z^2 - x^4y = -x^4\left(y - x^2\right) + \left(z + x^3\right)\left(z - x^3\right)
-	$$
-\end{enumerate}
+	\end{enumerate}
+\end{solution}
 
 \subsection*{2.3.10} Let $V \subseteq \RR^3$ be the curve parametrized by $\left(t, t^m, t^n\right), n, m \geq 2.$
 \begin{enumerate}
 	\item[a.] Show that $V$ is an affine variety.
 	\item[b.] Adapt the ideas in Exercise 9 to determine $\textbf{I}(V)$.
 \end{enumerate}
+\begin{solution}
+	\begin{enumerate}
+		\item[a.] We show that $V$ is the affine variety $\text{V}(x^m - y, x^n - z)$. Given some $(x_0, y_0, z_0) \in V$ we have
+		\begin{align*}
+			x_0 &= t \\
+			y_0 &= t^m \\
+			z_0 &= t^n \\
+		\end{align*}
+		for some $t \in \RR$ by the definition of $V$. Substituting these into the expressions for the affine variety give
+		\begin{align*}
+			x_0^m - y_0 &= t^m - t^m \\
+			&= 0
+		\end{align*}
+		and
+		\begin{align*}
+			x_0^n - z_0 &= t^n - t^n \\
+			&= 0.
+		\end{align*}
+		So the point is in the affine variety and therefore $V \subseteq \text{V}(x^m - y, x^n - z)$. For the other direction, pick some $\left(x_0, y_0, z_0\right) \in \text{V}(x^m - y, x^n - z)$. By definition
+		\begin{align*}
+			x_0^m &= y  && \text{and} \\
+			x_0^n &= z.
+		\end{align*}
+		If we let $t = x_0$ then substituting $t$ for $x_0$ in the expressions above give
+		\begin{align*}
+			y_0 &= t^m \\
+			z_0 &= t^n.
+		\end{align*}
+		But this is exactly the definition of the parametrization $V$. So $\text{V}(x^m - y, x^n - z) \subseteq V$. Hence $V = \text{V}(x^m - y, x^n - z)$ is an affine variety.
+		\item[b.] We will show that $\<x^m - y, x^n - z\> = \textbf{I}\left(\text{V}\left(x^m - y, x^n - z\right)\right)$. \textbf{Lemma 7} on page 34 of the textbook says that
+		$$
+			\<x^m - y, x^n - z\> \subseteq \textbf{I}\left(\text{V}\left(x^m - y, x^n - z\right)\right),
+		$$
+		so we only need to show the other inclusion. Fix the monomial ordering to be $>_\text{invlex}$ and take some $f \in \textbf{I}\left(\text{V}\left(x^m - y, x^n - z\right)\right)$. With the division algorithm we can write
+		$$
+			f = q_1\left(x^m - y\right) + q_2\left(x^n - z\right) + r
+		$$
+		for $q_1, q_2, r \in \RR[x,y,z]$. We show that $r$ is a polynomial in $x$ alone. Indeed, if this weren't the case, just like in the previous exercise, one of the monomials of $r$ would be divisible by $y$ or $z$. But this contradicts the division algorithm theorem since the leading terms of $x^m - y$ and $x^n - z$ are $y$ and $z$ respectively. So it must be that $r \in \RR[x]$. But then $f \in \<x^m - y, x^n - z\>$
+		$$
+			0 = f(t, t^m, t^n) = 0 + 0 + r(t)
+		$$
+		for every $t$. But this implies that $r$ is the zero polynomial. Therefore $f \in \<x^m - y, x^n - z\>$ and $\<x^m - y, x^n - z\> \supseteq \textbf{I}\left(\text{V}\left(x^m - y, x^n - z\right)\right)$. Therefore,
+		$$
+			\<x^m - y, x^n - z\> = \textbf{I}\left(\text{V}\left(x^m - y, x^n - z\right)\right).
+		$$
+	\end{enumerate}
+\end{solution}
 
 \subsection*{2.4.3} Let $I = \<x^6, x^2y^3,xy^7\> \subseteq k[x,y].$
 \begin{enumerate}
