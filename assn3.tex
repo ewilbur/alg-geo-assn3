@@ -6,6 +6,8 @@
 \graphicspath{ {./images/} }
 
 \newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\newtheorem{definition}{Definition}
 
 \renewcommand{\Pr}[1]{\text{Pr}\left(#1\right)} % For probability
 
@@ -86,8 +88,14 @@
 
 \subsection*{2.2.5} Show that grevlex is a monomial order according to Definition 1.
 \begin{solution}
+	\begin{definition}
+		Let $S$ be some set, $(T, \sim)$ be a partial order and $f : S \to T$ be an injective function. The relation $\sim' \subseteq S \times S$ defined by
+		$$
+			x \sim' y \iff 
+		$$
+	\end{definition}
 	\begin{lemma}
-		Let $\left(S, \leq\right)$ and $\left(T, \preceq\right)$ be two partial orders and $f : S \to T$ be an order embedding such that for all $\alpha, \beta \in S, f(\alpha + \beta) = f(\alpha) + f(\beta)$. If $T$ is a monomial ordering then so is $S$.
+		Let $\left(S, \leq\right)$ and $\left(T, \preceq\right)$ be two partial orders and $f : S \to T$ be an order embedding such that for all $\alpha, \beta \in S, f(\alpha + \beta) = f(\alpha) + f(\beta)$. Then if $T$ is a monomial ordering, so is $S$.
 		%Then $S$ is a monomial ordering only when $T$ is a monomial ordering.
 	\end{lemma}
 	\begin{proof}
@@ -111,6 +119,7 @@
 		\end{align*}
 		Thus $(S, \leq)$ is a monomial ordering.
 	\end{proof}
+	
 \end{solution}
 
 \subsection*{2.2.6} Another monomial order is the \textbf{inverse lexicographic} or \textbf{invlex} order defined by the following: for $\alpha, \beta \in \ZZ_{\geq 0}^{n}, \alpha >_{\text{invlex}} \beta$ if and only if the rightmost nonzero entry of $\alpha - \beta$ is positive. Show that invlex is equivalent to the lex order with the variables permuted in a certain way. (Which permutation?)
@@ -119,8 +128,8 @@
 \begin{enumerate}
 	\item[a.] Compute using grlex order:
 	\begin{align*}
-		f_1 &= \text{remainder of $f$ on division by $\left(f_1, f_2\right)$.} \\
-		f_2 &= \text{remainder of $f$ on division by $\left(f_1, f_2\right)$.}
+		r_1 &= \text{remainder of $f$ on division by $\left(f_1, f_2\right)$.} \\
+		r_2 &= \text{remainder of $f$ on division by $\left(f_2, f_1\right)$.}
 	\end{align*}
 	Your results should be \textit{different}. Where in the division algorithm did the difference occur?
 	\item[b.] Is $r = r_1 - r_2$ in the ideal $\<f_1, f_2\>$? If so, find an explicit expression $r = Af_1 + Bf_2$. If not, say why not.
@@ -128,12 +137,28 @@
 	\item[d.] Find another polynomial $g \in \<f_1, f_2\>$ such that the remainder on division of $g$ by $(f_1, f_2)$ is nonzero. Hint: $(xy + 1)\cdot f_2 = x^2y^2 - 1$, whereas $y\cdot f_1 = x^2y^2-yz$
 	\item[e.] Does the division algorithm give us a solution for the ideal membership problem for the ideal $\<f_1, f_2\>$? Explain your answer
 \end{enumerate}
+\begin{solution}
+	\begin{enumerate}
+		\item[a.] On a separate sheet of paper, I computed the remainder to be
+		\begin{align*}
+			r_1 &= x^3 - x^2z + x - z \\
+			r_2 &= x^3 - x^2z
+		\end{align*}
+		\item[b.] Yes
+		$$
+			r = -\left(x^2y - z\right) - x\left(xy - 1\right)
+		$$
+		\item[c.] There is no need to compute the remainder since it must be $r = x - z$. This can be readily seen since neither $\text{LT}(f_1)$ or $\text{LT}(f_2)$ divide any of the terms in $r$. 
+		\item[d.] The polynomial $g = yz - 1 \in \<f_1, f_2\>$, but the remainder on division of $g$ by $(f_1, f_2)$ is $-1$.
+		\item[e.] No, even if a polynomial $g \in \<f_1, f_2\>$, it need not be the case that the remainder of $g$ by $(f_1, f_2)$ is zero.
+	\end{enumerate}
+\end{solution}
 
 \subsection*{2.3.9} The discussion around equation (2) of Chapter 1, \S4 shows that every polynomial $f \in \RR[x,y,z]$ can be written as
 $$
 	f = h_1\left(y - x^2\right) + h_2\left(z-x^3\right) + r,
 $$
-where $r$ is a polynomial in $x$ alone and $\textbf{V})\left(y-x^3, z-x^3\right)$ is the twisted cubic curve in $\RR^3$.
+where $r$ is a polynomial in $x$ alone and $\textbf{V}\left(y-x^2, z-x^3\right)$ is the twisted cubic curve in $\RR^3$.
 \begin{enumerate}
 	\item[a.] Give a proof of this fact using the division algorithm. Hint: You need to specify carefully the monomial ordering to be used. 
 	\item[b.] Use the parametrization of the twisted cubic to show that $z^2 - x^4y$ vanishes at every point of the twisted cubic.
@@ -166,8 +191,9 @@ where $r$ is a polynomial in $x$ alone and $\textbf{V})\left(y-x^3, z-x^3\right)
 
 \subsection*{2.4.9} Suppose we have the polynomial ring $k[x_1,\dots,x_n,y_1,\dots,y_m]$. Let us define a monomial order $>_\text{mixed}$ on this ring that mixes lex order for $x_1,\dots,x_n$, with grlex order for $y_1,\dots,y_m$. If we write monomials in the $n + m$ variables as $x^{\alpha}y^{\beta}$, where $\alpha \in \ZZ_{\geq 0}^n$ and $\beta \in \ZZ_{\geq 0}^{m}$, then we define
 $$
-	x^{\alpha}y^{\beta} >_{\text{mixed}} x^{\gamma}y^{\delta} \iff x^{\alpha} >_{\text{lex}} x^{\gamma} \text{ or } x^{\alpha} = x^{\gamma} \text{ and } y^{\beta}. >_{\text{grlex}}y^\delta
+	x^{\alpha}y^{\beta} >_{\text{mixed}} x^{\gamma}y^{\delta} \iff x^{\alpha} >_{\text{lex}} x^{\gamma} \text{ or } x^{\alpha} = x^{\gamma} \text{ and } y^{\beta} >_{\text{grlex}}y^\delta.
 $$
+Use Corollary 6 to prove that $>_\text{mixed}$ is a monomial order. This is an example of what is called a \textit{product order}. It is clear that many other monomial orders can be created by this method.
 
 \subsection*{2.5.1} Let $I = \<g_1,g_2,g_3\> \subseteq \RR[x,y,z]$, where $g_1 = xy^2 - xz + y, g_2 = xy - z^2$ and $g_3 = x - yz^4$. Using the lex order, give an example of $g \in I$ such that $\text{LT}(g) \notin \<\text{LT}(g_1), \text{LT}(g_2), \text{LT}(g_3)\>$.
 
