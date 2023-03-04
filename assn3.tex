@@ -168,6 +168,38 @@ where $r$ is a polynomial in $x$ alone and $\textbf{V}\left(y-x^2, z-x^3\right)$
 	$$
 	using the division algorithm.
 \end{enumerate}
+\begin{enumerate}
+	\item[a.]
+	\begin{proof}
+		Fix the monomial ordering to be $>_\text{invlex}$ which is defined in \textbf{2.2.6}. Observe that, under this ordering, $\text{LT}\left(y-x^2\right) = y$ and $\text{LT}\left(z-x^3\right) = z$. Given some $f \in \RR[x,y,z]$, the division algorithm yields $q_1, q_2,$ and $r \in \RR[x, y, z]$ such that
+		$$
+			f = q_1\left(y-x^2\right) + q_2\left(z-x^3\right) + r.
+		$$
+		We need to show that $r$ is a polynomial in $x$ alone. By the division algorithm, there are two possibilities for $r$. Either $r = 0$ or $r$ is a linear combination, with coefficients in $k$, of monomials, none of which is divisible by any $\text{LT}\left(y-x^2\right), \text{LT}\left(z-x^3\right)$. In the first case, we may obviously express $r$ as a polynomial in $x$ alone as
+		$$
+			r(x) = 0.
+		$$
+		In the latter case, let's assume for contradiction (and without loss of generality!) that $r$ is a polynomial of $y$ as well. Well then at least one monomial of $r$ has the variable $y$ with exponent greater than 0. But this would imply that $y$ divides that monomial. But this is a contradiction since the division algorithm guarantees that no monomial of $r$ can by divisible by $\text{LT}\left(y-x^2\right) = y$. So it must be that $r$ is a polynomial in $x$ alone.
+	\end{proof}
+	\item[b.] The parametrization of the twisted cubic is
+	\begin{align*}
+		x(t) &= t   \\
+		y(t) &= t^2 \\
+		z(t) &= t^3. \\
+	\end{align*}
+	Substituting these for the expression gives
+	\begin{align*}
+		z^2 - x^4y &= \left(t^3\right)^2 - \left(t\right)^4\left(t^2\right) \\
+		&= t^6 - t^4t^2 \\
+		&= t^6 - t^6 \\
+		&= 0
+	\end{align*}
+	and so it vanishes at every point of the twisted cubic.
+	\item[c.] 
+	$$
+		z^2 - x^4y = -x^4\left(y - x^2\right) + \left(z + x^3\right)\left(z - x^3\right)
+	$$
+\end{enumerate}
 
 \subsection*{2.3.10} Let $V \subseteq \RR^3$ be the curve parametrized by $\left(t, t^m, t^n\right), n, m \geq 2.$
 \begin{enumerate}
