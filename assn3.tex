@@ -261,6 +261,16 @@ where $r$ is a polynomial in $x$ alone and $\textbf{V}\left(y-x^2, z-x^3\right)$
 	\item[a.] In the $(m, n)\text{-plane}$, plot the set of exponent vectors $\left(m,n\right)$ of monomials $x^my^n$ appearing in elements of $I$.
 	\item[b.] If we apply the division algorithm to an element $f \in k[x,y]$, using the generators of $I$ as divisors, what terms can appear in the remainder?
 \end{enumerate}
+\begin{solution}
+	\begin{center}
+		\includegraphics[width=9cm]{2-4-3-soln.jpg}
+	\end{center}
+	For part (b), the only terms that can appear in the remainder are linear combinations of monomials that are not in the ideal. Using \textbf{Lemma 2} on page 70 of the textbook, we can list every monomial not in the ideal:
+	$$
+		A = \{x^my^n | \left(m < 6 \land n < 3\right) \lor \left(m < 2 \land n < 7\right) \lor \left(m < 1\right)\}.
+	$$
+	So any linear combination with coefficients in $k$ of the elements in $A$ will give a possible remainder.
+\end{solution}
 \subsection*{2.4.4} Let $I \subseteq k[x,y]$ be the monomial ideal spanned over $k$ by the monomials $x^\beta$ corresponding to $\beta$ in the shaded region shown at the top of the next page.
 \begin{enumerate}
 	\item[a.] Use the method given in the proof of Theorem 5 to find an ideal basis for $I$.
