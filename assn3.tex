@@ -139,6 +139,38 @@
 		\end{align*}
 		Thus $(S, \leq)$ is a monomial ordering.
 	\end{proof}
+	The mapping $f : \left( \ZZ_{\geq 0}^n, <_{\text{invlex}}\right) \to \left(\ZZ_{\geq 0}^n, <_{\text{lex}}\right)$ given by $\left(\alpha_1,\dots,\alpha_n\right) \mapsto \left(\alpha_n,\dots,\alpha_1\right)$ is an order embedding with the property that $f(x + y) = f(x) + f(y)$. 
+	\\
+	\\
+	First we show that $f$ is injective. Indeed, given $\alpha, \beta \in \ZZ_{\geq 0}^n$, suppose that $f(\alpha) = f(\beta)$. Then with $\alpha = (\alpha_1,\dots,\alpha_n)$ and $\beta = (\beta_1,\dots,\beta_n)$ we have
+	$$
+		\alpha_n = \beta_n, \dots \alpha_1 = \beta_1
+	$$
+	so $\alpha = \beta$.
+	\\
+	\\
+	Next, we show that $f$ preserves the order of $\left(\ZZ_{\geq 0}^n, <_{\text{invlex}}\right)$. Indeed, given $\alpha, \beta \in \ZZ_{\geq 0}^n$ suppose that $\alpha <_{\text{invlex}} \beta$. Then by definition, the rightmost nonzero index of $\alpha - \beta$ is positive. Call this index $j$ so we have
+	\begin{align*}
+		\alpha_k - \beta_k &= 0 && \text{for $j + 1 \leq k \leq n$} \\
+		\alpha_j - \beta_j &> 0.
+	\end{align*}
+	So then the image of these two values is
+	\begin{align*}
+		f(\alpha) &= \left(a_n,\dots,a_j,\dots,\alpha_1\right) \\
+		f(\beta) &= \left(\beta_n,\dots,\beta_j,\dots,\beta_1\right).
+	\end{align*}
+	But the leftmost nonzero entry in the image is the same as the rightmost nonzero entry in the preimage. So it must be the case that $f(\alpha) <_{\text{invlex}} f(\beta)$. A similar argument shows the other direction, namely that $f(\alpha) < f(\beta) \implies \alpha < \beta$. So $f$ is an order embedding.
+	\\
+	\\
+	All that is left to show is that $f(\alpha + \beta) = f(\alpha) + f(\beta)$. Indeed,
+	\begin{align*}
+		f(\alpha + \beta) &= f\left(\left(\alpha_1,\dots,\alpha_n\right) + \left(\beta_1,\dots,\beta_n\right)\right) \\
+		&= f\left(\left(\alpha_1 + \beta_1,\dots,\alpha_n + \beta_n\right)\right) \\
+		&= \left(\alpha_n + \beta_n,\dots,\alpha_1 + \beta_1\right) \\
+		&= \left(\alpha_n,\dots,\alpha_1\right) + \left(\beta_n,\dots,\beta_1\right) \\
+		&= f\left(\left(\alpha_n,\dots,\alpha_1\right)\right) + f\left(\left(\beta_n,\dots,\beta_1\right)\right).
+	\end{align*}
+	So by the above \textbf{Lemma 1}, it must be that invlex is a monomial order. The permutation can be seen in how $f$ is defined, it is simply the reversal of all the elements. 
 \end{solution}
 
 \subsection*{2.3.5} We will study the division of $f = x^3 - x^2y - x^2z + x$ by $f_1 = x^2y-z$ and $f_2 = xy - 1$. 
