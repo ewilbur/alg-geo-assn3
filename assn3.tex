@@ -298,6 +298,36 @@ $$
 	x^{\alpha}y^{\beta} >_{\text{mixed}} x^{\gamma}y^{\delta} \iff x^{\alpha} >_{\text{lex}} x^{\gamma} \text{ or } x^{\alpha} = x^{\gamma} \text{ and } y^{\beta} >_{\text{grlex}}y^\delta.
 $$
 Use Corollary 6 to prove that $>_\text{mixed}$ is a monomial order. This is an example of what is called a \textit{product order}. It is clear that many other monomial orders can be created by this method.
+\begin{solution}
+
+	\begin{lemma}
+		If $(A, \leq_A)$ and $(B, \leq_B)$ are monomial orders, then $(A \times B, \leq_{A\times B})$ defined by
+		\begin{align*}
+			(a_1, b_1) <_{A \times B} (a_2, b_2) &\iff a_1 <_A a_2 \text{ or } a_1 = a_2 \text{ and } b_1 <_B b_2 \\
+			(a_1, b_1) >_{A \times B} (a_2, b_2) &\iff a_1 >_A a_2 \text{ or } a_1 = a_2 \text{ and } b_1 >_B b_2 \\
+			(a_1, b_1) =_{A \times B} (a_2, b_2) &\iff a_1 = a_1 \text{ and } b_1 = b_2
+		\end{align*}
+		with $(a_1, b_1), (a_2, b_2) \in A \times B$, is a monomial ordering.
+	\end{lemma}
+	\begin{proof}
+		First we show that the ordering is total. Indeed, given $(a_1, b_1), (a_2, b_2) \in A \times B$, since the orderings on $A$ and $B$ are total, without loss of generality either $a_1 <_A a_2$ or $a_1 =_A a_2$. If $a_1 <_A a_2$ then by definition $(a_1, b_1) <_{A \times B} (a_2, b_2)$. If $a_1 =_A a_2$ then again by the total ordering on $B$ either $b_1 <_B b_2$, $b_1 >_B b_2$, or $b_1 =_B b_2$. In any of these three cases, the order will be decided entirely by the order of $B$. So no matter what, any two elements in $A \times B$ will be comparable. 
+		\\
+		\\
+		Next we will show that $A \times B$ is well-ordered. Given some $C \subseteq A \times B$, consider the projection $\text{fst} : C \to A$. Since $A$ is well ordered, the image of this projection has a smallest element, say $a \in A$. Now define $C' = \text{fst}^{-1}(a) \cap C \subseteq C$, which is minimal in the first element. Using the other projection, $\text{snd} : C \to B$, on $C'$ gives a subset $\text{snd}(C') \subseteq B$. Since $B$ is well ordered, $\text{snd}(C')$ has a smallest element, say $b \in B$. The element $(a, b)$ is the smallest element of $C$. Indeed if this weren't the case, there must be an $C \ni (a', b') < (a, b)$. If $a' <_A a$ then $a$ wouldn't have been the smallest element of $\text{fst}(C)$. Likewise if $b' <_B b$. So $(a, b)$ is the smallest element and we have a well-ordering. 
+		\\
+		\\
+		Finally, given $(a_1, b_1), (a_2, b_2), (a', b') \in A \times B$ suppose $(a_1, b_1) <_{A \times B} (a_2, b_2)$. We need to show that $(a_1, b_1) + (a', b') <_{A \times B} (a_2, b_2) + (a', b')$. There are two cases to consider: $a_1 <_A a_2$ or $a_1 =_A a_2$. If $a_1 <_A a_2$ then $a_1 + a' <_A a_2 + a'$ because $A$ is a monomial ordering. So $(a_1, b_1) + (a', b') <_{A \times B} (a_2, b_2) + (a', b')$. Otherwise, $a_1 =_A a_2$. So it must be that $b_1 <_B b_2$. But again, $B$ is a monomial ordering so $b_1 + b' <_B b_2 + b'$. Thus $(a_1, b_1) + (a', b') <_{A \times B} (a_2, b_2) + (a', b')$.
+	\end{proof}
+	Consider the mapping $f : k[x_1,\dots,x_n,y_1,\dots,y_m] \to k[x_1,\dots,x_n] \times k[y_1,\dots,y_m]$ given by $x^\alpha y^\beta \mapsto (x^\alpha, y^\beta)$. It's clear that this is an order embedding. So we show that $f(x + y) = f(x) + f(y)$. Indeed,
+	\begin{align*}
+		&f\left(\left(\alpha_1,\dots,\alpha_n,\beta_1,\dots,\beta_m\right) + \left(\alpha'_1,\dots,\alpha'_n,\beta'_1,\dots,\beta'_m\right)\right) \\
+		= &f\left(\left(\alpha_1 + \alpha'_1,\dots,\alpha_n + \alpha'_n,\beta_1 + \beta'_1,\dots,\beta_m + \beta'_m\right)\right) \\
+		= &\left(\left(\alpha_1 + \alpha'_1,\dots,\alpha_n + \alpha'_n\right), \left(\beta_1 + \beta'_1,\dots,\beta_m + \beta'_m\right)\right) \\
+		= &\left(\left(\alpha_1,\dots,\alpha_n\right), \left(\beta_1,\dots,\beta_m\right)\right) + \left(\left(\alpha'_1,\dots,\alpha'_n\right), \left(\beta'_1,\dots,\beta'_m\right)\right) \\
+		= &f\left(\left(\alpha_1,\dots,\alpha_n, \beta_1,\dots,\beta_m\right)\right) + f\left(\left(\alpha'_1,\dots,\alpha'_n, \beta'_1,\dots,\beta'_m\right)\right)
+	\end{align*}
+	which is what was desired. So by \textbf{Lemma 1} and \textbf{Lemma 2} defined in this assignment, $>_\text{mixed}$ is a monomial order.
+\end{solution}
 
 \subsection*{2.5.1} Let $I = \<g_1,g_2,g_3\> \subseteq \RR[x,y,z]$, where $g_1 = xy^2 - xz + y, g_2 = xy - z^2$ and $g_3 = x - yz^4$. Using the lex order, give an example of $g \in I$ such that $\text{LT}(g) \notin \<\text{LT}(g_1), \text{LT}(g_2), \text{LT}(g_3)\>$.
 
