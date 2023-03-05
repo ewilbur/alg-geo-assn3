@@ -275,6 +275,23 @@ where $r$ is a polynomial in $x$ alone and $\textbf{V}\left(y-x^2, z-x^3\right)$
 \begin{center}
 	\includegraphics{2-4-4.png}
 \end{center}
+\begin{solution}
+	\begin{enumerate}
+		\item[a.] First, we find the projection to be $J = \<x^3\>$. Since we have $x^3y^6 \in I$, then $m = 6$. So we get the following ``slices''
+		\begin{align*}
+			J_0 = J_1 = J_2 = J_3 = \<x^6\> \\
+			J_4 = J_5 = \<x^5\>. \\
+		\end{align*}
+		So
+		$$
+			I = \<x^6, x^6y, x^6y^2,x^6y^3,x^5y^4,x^5y^5,x^3y^6\>.
+		$$
+		\item[b.] Since the number of generators of $I$ is relatively small, we can do this by hand (or just look at the picture provided!)
+		$$
+			I = \<x^6,x^5y^4,x^3y^6\>.
+		$$
+	\end{enumerate}
+\end{solution}
 
 \subsection*{2.4.9} Suppose we have the polynomial ring $k[x_1,\dots,x_n,y_1,\dots,y_m]$. Let us define a monomial order $>_\text{mixed}$ on this ring that mixes lex order for $x_1,\dots,x_n$, with grlex order for $y_1,\dots,y_m$. If we write monomials in the $n + m$ variables as $x^{\alpha}y^{\beta}$, where $\alpha \in \ZZ_{\geq 0}^n$ and $\beta \in \ZZ_{\geq 0}^{m}$, then we define
 $$
